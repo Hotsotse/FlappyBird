@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.font.TextLayout;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JPanel;
@@ -106,7 +107,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 				 * double which looks ugly.
 				 */
 				if (wall.intersects(bird)) {
-					highScore2 = HighScore.getScore(score);
+
 					gameEnd = true;
 					if (bird.x < wall.x) {
 						bird.x = wall.x - bird.width;
@@ -135,6 +136,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 			} // Make a wall at the top that bird bounces off of.
 		}
 		if (gameEnd) {
+			highScore2 = HighScore.getScore(score);
 			start = false;
 			if (bird.y > HEIGHT - 35) {
 				bird.y = HEIGHT - 50;
@@ -185,19 +187,35 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 
 		g2d.setFont(new Font("Verdana", 1, 75));
 		g2d.setColor(Color.red);
-		if (gameEnd) {
-			g2d.drawString("Game Over!", WIDTH / 2 - 280, HEIGHT / 2 - 50);
-		}
+
 		g2d.setColor(Color.gray);
 		if (!start && !gameEnd) {
 			g2d.drawString("Click to start", WIDTH / 2 - 280, HEIGHT / 2 - 50);
 		}
 
-		if (gameEnd) {
-			g2d.drawString(Integer.toString(highScore2), WIDTH/2, HEIGHT/2);
-		}
-			
+
 		
+		g2d.setFont(new Font("impact", Font.BOLD, 35));
+		if (gameEnd) {
+			g2d.setColor(Color.black);
+			g2d.fillRect(WIDTH/2-104, HEIGHT/2-94, 208, 208);
+			g2d.setColor(Color.orange);
+			g2d.fillRect(WIDTH/2-100, HEIGHT/2-90, 200, 200);
+			g2d.setColor(Color.black);
+			g2d.setFont(new Font("impact", Font.BOLD, 40));
+			g2d.drawString("Score", WIDTH / 2 - 49, HEIGHT / 2 - 32);
+			g2d.drawString(Integer.toString(score), WIDTH / 2 - 49, HEIGHT / 2 + 3);
+			g2d.drawString("Best", WIDTH / 2 - 49, HEIGHT / 2 + 53);
+			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 49, HEIGHT / 2 + 88);
+			g2d.setColor(Color.white);
+			g2d.setFont(new Font("impact", Font.BOLD, 40));
+			g2d.drawString("Score", WIDTH / 2 - 50, HEIGHT / 2 - 35);
+			g2d.drawString(Integer.toString(score), WIDTH / 2 - 50, HEIGHT / 2);
+			g2d.drawString("Best", WIDTH / 2 - 50, HEIGHT / 2 + 50);
+			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 50, HEIGHT / 2 + 85);
+
+		}
+
 		if (spaceDown) {
 			yVel = -10;
 		}

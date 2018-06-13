@@ -26,7 +26,7 @@ public class HighScore extends JFrame {
 		scoreLabel = new JLabel();
 		outer.add(scoreLabel);
 		this.setContentPane(outer);
-		loadScore();
+		//loadScore();
 	}
 
 	public HighScore(int score) {
@@ -36,6 +36,7 @@ public class HighScore extends JFrame {
 	
 	public static int getScore(int score)
 	{
+		loadScore();
 		addScore(score);
 		return highScore;
 	}
@@ -58,7 +59,7 @@ public class HighScore extends JFrame {
 		}
 	}
 
-	public void loadScore() {
+	public static void loadScore() {
 		String temp;
 		try {
 			BufferedReader in = new BufferedReader(new FileReader("highscore.txt"));

@@ -32,7 +32,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 	public static final Color PIPE_COLOR = new Color(0, 102, 0); // http://teaching.csse.uwa.edu.au/units/CITS1001/colorinfo.html
 	// OTHER
 	Random rand = new Random();
-	// private HighScore FlappyScore;
+	private HighScore FlappyScore;
+	int highScore2;
 	int birdX = 200; // birdX is a constant
 	static int score = 0;
 	static int WIDTH = 800;
@@ -105,6 +106,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 				 * double which looks ugly.
 				 */
 				if (wall.intersects(bird)) {
+					highScore2 = HighScore.getScore(score);
 					gameEnd = true;
 					if (bird.x < wall.x) {
 						bird.x = wall.x - bird.width;
@@ -133,7 +135,6 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 			} // Make a wall at the top that bird bounces off of.
 		}
 		if (gameEnd) {
-			// FlappyScore.addScore(score);
 			start = false;
 			if (bird.y > HEIGHT - 35) {
 				bird.y = HEIGHT - 50;
@@ -146,9 +147,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 				bird.y += yVel;
 			}
 		}
-
 		repaint();
-
 	}
 
 	public void paintComponent(Graphics g) {
@@ -187,13 +186,18 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 		g2d.setFont(new Font("Verdana", 1, 75));
 		g2d.setColor(Color.red);
 		if (gameEnd) {
-			g2d.drawString("Game Over!", WIDTH / 2 - 250, HEIGHT / 2-50);
+			g2d.drawString("Game Over!", WIDTH / 2 - 280, HEIGHT / 2 - 50);
 		}
 		g2d.setColor(Color.gray);
 		if (!start && !gameEnd) {
-			g2d.drawString("Click to start", WIDTH / 2 - 250, HEIGHT / 2-50);
+			g2d.drawString("Click to start", WIDTH / 2 - 280, HEIGHT / 2 - 50);
 		}
 
+		if (gameEnd) {
+			g2d.drawString(Integer.toString(highScore2), WIDTH/2, HEIGHT/2);
+		}
+			
+		
 		if (spaceDown) {
 			yVel = -10;
 		}

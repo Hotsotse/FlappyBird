@@ -10,16 +10,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.font.TextLayout;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /*TODO:
- * -Highscores
- * -Draw image
- * -Redo pipes maybe 
+ * -Highscores >DONE
+ * -Draw image >WORKING ON
+ * -Redo pipes maybe >NOT GOING TO DO
  */
 
 public class GamePanel extends JPanel implements KeyListener, ActionListener, MouseListener {
@@ -126,7 +125,6 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 				}
 			}
 			if (bird.y > HEIGHT - 35) {
-				bird.y = HEIGHT - 50;
 				gameEnd = true;
 			} // If the bird hits grass (birdHeight + grassHeight).
 
@@ -139,7 +137,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 			highScore2 = HighScore.getScore(score);
 			start = false;
 			if (bird.y > HEIGHT - 35) {
-				bird.y = HEIGHT - 50;
+				bird.y = HEIGHT - 45;
 			}
 			if (fall) {
 				ticks++;
@@ -193,31 +191,31 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 			g2d.drawString("Click to start", WIDTH / 2 - 280, HEIGHT / 2 - 50);
 		}
 
-
-		
 		g2d.setFont(new Font("impact", Font.BOLD, 35));
 		if (gameEnd) {
 			g2d.setColor(Color.black);
-			g2d.fillRect(WIDTH/2-104, HEIGHT/2-94, 208, 208);
+			g2d.fillRect(WIDTH / 2 - 104, HEIGHT / 2 - 94, 208, 208);
 			g2d.setColor(Color.orange);
-			g2d.fillRect(WIDTH/2-100, HEIGHT/2-90, 200, 200);
+			g2d.fillRect(WIDTH / 2 - 100, HEIGHT / 2 - 90, 200, 200);
 			g2d.setColor(Color.black);
 			g2d.setFont(new Font("impact", Font.BOLD, 40));
-			g2d.drawString("Score", WIDTH / 2 - 49, HEIGHT / 2 - 32);
-			g2d.drawString(Integer.toString(score), WIDTH / 2 - 49, HEIGHT / 2 + 3);
-			g2d.drawString("Best", WIDTH / 2 - 49, HEIGHT / 2 + 53);
-			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 49, HEIGHT / 2 + 88);
+			g2d.drawString("Score", WIDTH / 2 - 54, HEIGHT / 2 - 32);
+			g2d.drawString(Integer.toString(score), WIDTH / 2-11, HEIGHT / 2 + 8);
+			g2d.drawString("Best", WIDTH / 2 - 44, HEIGHT / 2 + 53);
+			g2d.drawString(Integer.toString(highScore2), WIDTH / 2-14, HEIGHT / 2 + 93);
 			g2d.setColor(Color.white);
 			g2d.setFont(new Font("impact", Font.BOLD, 40));
-			g2d.drawString("Score", WIDTH / 2 - 50, HEIGHT / 2 - 35);
-			g2d.drawString(Integer.toString(score), WIDTH / 2 - 50, HEIGHT / 2);
-			g2d.drawString("Best", WIDTH / 2 - 50, HEIGHT / 2 + 50);
-			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 50, HEIGHT / 2 + 85);
+			g2d.drawString("Score", WIDTH / 2 - 55, HEIGHT / 2 - 35);
+			g2d.drawString(Integer.toString(score), WIDTH / 2 -12, HEIGHT / 2+5);
+			g2d.drawString("Best", WIDTH / 2 - 45, HEIGHT / 2 + 50);
+			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 -15, HEIGHT / 2 + 90);
 
 		}
 
 		if (spaceDown) {
-			yVel = -10;
+			if (start) {
+				yVel = -10;
+			}
 		}
 
 	}

@@ -1,0 +1,37 @@
+Flappy Bird Proposal:
+Class hierarchy chart: 
+
+
+
+Class Main:
+•	Properties:
+o	JFrame frame		Sets frame for panel
+•	methods:
+o	main (String[] args)
+	Creates the frame and sets GamePanel as the panel, GamePanel will do the drawing and logic
+Class GamePanel:
+•	Constants
+o	int birdX	= Bird x position, never changes
+o	int crevace	= Wall gaps
+o	Color PIPE_COLOR		= Nice green color for pipes
+o	Int WIDTH, HEIGHT		= Window dimensions
+•	Variables
+o	int yVel	= Bird’s Y-axis velocity
+o	int highScore2		= Fetches the high score from the HighScore class
+o	int rand		= Generates random value for the height of the gap’s starting y value
+o	Timer timer		= Timer that runs every 20 milliseconds to render image
+o	boolean Start, gameEnd	= Set to either true or false to run the code when the game has started vs hasn’t started
+o	int ticks, yVel		= Manages ticks by adding 2 and the yVelocity of the bird
+o	ArrayList<Rectangle> walls		= ArrayList that holds walls
+o	boolean fall		= After the game ends, the boolean will tell it whether to have a yVelocity of just freeze
+o	boolean spaceDown		= When space is pressed it sets yVel = -10
+•	Methods:
+o	public GamePanel()		
+o	public void actionPerformed()
+o	public void paintComponent()		draw score, pipes, bird and background objects
+o	public void addWalls()
+o	public void paintWalls()
+o	public void keyPressed()
+o	public void mouseClicked()
+Class HighScore:
+

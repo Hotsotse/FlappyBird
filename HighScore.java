@@ -67,7 +67,7 @@ public class HighScore extends JFrame {
 			highScore = Integer.parseInt(temp);
 			in.close();
 		} catch (IOException e) {
-			System.out.println("Cannot open file (loadScore).");
+			System.out.println("Cannot open file (highscore.txt), file has been created.");
 		}
 	}
 }

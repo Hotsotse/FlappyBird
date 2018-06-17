@@ -1,12 +1,9 @@
-import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class HighScore extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -19,14 +16,7 @@ public class HighScore extends JFrame {
 
 	public HighScore() {
 		super("Score");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBounds(300, 300, 600, 600);
-		JPanel outer = new JPanel(new BorderLayout());
-
-		scoreLabel = new JLabel();
-		outer.add(scoreLabel);
-		this.setContentPane(outer);
-		//loadScore();
+		loadScore();
 	}
 
 	public HighScore(int score) {

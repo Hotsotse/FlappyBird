@@ -141,7 +141,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 			highScore2 = HighScore.getScore(score);
 			start = false;
 			if (bird.y > HEIGHT - 35) {
-				bird.y = HEIGHT - 45;
+				bird.y = HEIGHT - 35;
 			}
 			if (fall) {
 				ticks++;
@@ -212,15 +212,15 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener, Mo
 			g2d.setColor(Color.black);
 			g2d.setFont(new Font("impact", Font.BOLD, 40));
 			g2d.drawString("Score", WIDTH / 2 - 54, HEIGHT / 2 - 32);
-			g2d.drawString(Integer.toString(score), WIDTH / 2 - 11, HEIGHT / 2 + 8);
+			g2d.drawString(Integer.toString(score), WIDTH / 2 - 9, HEIGHT / 2 + 8);
 			g2d.drawString("Best", WIDTH / 2 - 44, HEIGHT / 2 + 53);
-			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 14, HEIGHT / 2 + 93);
+			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 16, HEIGHT / 2 + 93);
 			g2d.setColor(Color.white);
 			g2d.setFont(new Font("impact", Font.BOLD, 40));
 			g2d.drawString("Score", WIDTH / 2 - 55, HEIGHT / 2 - 35);
-			g2d.drawString(Integer.toString(score), WIDTH / 2 - 12, HEIGHT / 2 + 5);
+			g2d.drawString(Integer.toString(score), WIDTH / 2 - 10, HEIGHT / 2 + 5);
 			g2d.drawString("Best", WIDTH / 2 - 45, HEIGHT / 2 + 50);
-			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 15, HEIGHT / 2 + 90);
+			g2d.drawString(Integer.toString(highScore2), WIDTH / 2 - 17, HEIGHT / 2 + 90);
 		}
 
 		if (spaceDown) {
